@@ -27,7 +27,7 @@ phases:
     commands:
       - echo Building the application...
       - sudo mkdir -p ./var/www/html
-      - sudo node app.js
+      - sudo node server.js
 
   post_build:
     commands:
