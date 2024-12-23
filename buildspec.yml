@@ -27,8 +27,6 @@ phases:
     commands:
       - echo Building the application...
       - sudo mkdir -p ./var/www/html
-      - cp -f *.js ./var/www/html/
-      - echo application file copied successfully
       - sudo node app.js
 
   post_build:
