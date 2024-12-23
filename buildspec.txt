@@ -1,0 +1,41 @@
+version: 0.2
+
+env:
+  variables:
+    NODE_ENV: QA
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18  # Change this to the Node.js version you want to use
+    commands:
+      - echo Installing Node.js dependencies...
+	  - sudo yum update -y
+	  - sudo yum install npm -y  # installing the npm tool
+      - sudo mkdir -p /opt/my-node-app       # Creating a my-node-app directory
+      - cd my-node-app                # Navigate into the directory
+	  - sudo npm init -y    # initializing the Node Package Manager  
+      - sudo npm install  # Install the app dependencies
+	  - sudo npm install express   # Express to serve your HTML content or handle HTTP requests	
+
+  pre_build:
+    commands:
+      - echo No pre-build steps required
+
+  build:
+    commands:
+      - echo Building the application...
+      - npm run build  # If you have a build script, otherwise this step can be omitted
+
+  post_build:
+    commands:
+      - echo Build complete. Ready to deploy.
+
+artifacts:
+  files:
+    - '**/*'  # This will include everything in your project directory, so the entire app is available for deployment
+  discard-paths: yes  # This removes the directory structure, including files in subdirectories
+
+cache:
+  paths:
+    - 'node_modules/**/*'  # Cache the node_modules directory to speed up builds
