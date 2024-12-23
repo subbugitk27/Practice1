@@ -12,7 +12,8 @@ phases:
       - echo Installing Node.js dependencies...
       - sudo yum update -y
       - sudo yum install npm -y  # installing the npm tool
-      - sudo mkdir -p /opt/my-node-app       # Creating a my-node-app directory
+      - cd /opt
+      - sudo mkdir -p /my-node-app       # Creating a my-node-app directory
       - cd my-node-app                # Navigate into the directory
       - sudo npm init -y    # initializing the Node Package Manager  
       - sudo npm install  # Install the app dependencies
