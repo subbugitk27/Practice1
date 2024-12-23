@@ -10,13 +10,13 @@ phases:
       nodejs: 18  # Change this to the Node.js version you want to use
     commands:
       - echo Installing Node.js dependencies...
-	  - sudo yum update -y
-	  - sudo yum install npm -y  # installing the npm tool
+      - sudo yum update -y
+      - sudo yum install npm -y  # installing the npm tool
       - sudo mkdir -p /opt/my-node-app       # Creating a my-node-app directory
       - cd my-node-app                # Navigate into the directory
-	  - sudo npm init -y    # initializing the Node Package Manager  
+      - sudo npm init -y    # initializing the Node Package Manager  
       - sudo npm install  # Install the app dependencies
-	  - sudo npm install express   # Express to serve your HTML content or handle HTTP requests	
+      - sudo npm install express   # Express to serve your HTML content or handle HTTP requests	
 
   pre_build:
     commands:
@@ -25,7 +25,10 @@ phases:
   build:
     commands:
       - echo Building the application...
-      - npm run build  # If you have a build script, otherwise this step can be omitted
+      - sudo mkdir -p ./var/www/html
+      - cp *.js ./var/www/html/
+      - echo application file copied successfully
+      - sudo node app.js
 
   post_build:
     commands:
