@@ -26,7 +26,8 @@ phases:
   build:
     commands:
       - echo Building the application...
-      - sudo node /opt/my-node-app/server.js
+      - cd /opt/my-node-app/
+      - sudo node server.js
 
   post_build:
     commands:
