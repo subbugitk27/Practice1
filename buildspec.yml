@@ -26,8 +26,6 @@ phases:
   build:
     commands:
       - echo Building the application...
-      - sudo mkdir -p ./var/www/html
-      - cp -f /opt/my-node-app/*.js /var/www/html/
       - sudo node server.js
 
   post_build:
